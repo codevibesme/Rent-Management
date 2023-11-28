@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
+
 const fetchEmails = async () => {
   let new_mail_list = [];
   try {
@@ -8,15 +9,16 @@ const fetchEmails = async () => {
       { cache: "no-store" }
     );
     new_mail_list = await response.json();
+    // setMail_list(new_mail_list);
     return new_mail_list;
   } catch (err) {
     console.log(err);
+    return [];
   }
-  return new_mail_list;
+  // setMail_list(new_mail_list);
 };
 const Emails = async () => {
   const mail_list = await fetchEmails();
-
   return (
     <div className="flex flex-col p-4">
       <div className="flex w-full border-b border-gray-100 mb-4">
@@ -27,6 +29,7 @@ const Emails = async () => {
       </div>
       <div className="max-w-screen max-h-screen overflow-y-auto">
         {mail_list &&
+          mail_list.length !== 0 &&
           mail_list.map((item, key) => {
             return (
               <div
@@ -56,6 +59,9 @@ const Emails = async () => {
               </div>
             );
           })}
+        {mail_list && mail_list.length === 0 && (
+          <div className="text-gray-500 text-center">No Emails to show</div>
+        )}
       </div>
     </div>
   );
