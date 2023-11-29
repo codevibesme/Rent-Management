@@ -38,11 +38,11 @@ const Navbar = () => {
           <IoMenuOutline className="text-4xl md:hidden" />{" "}
         </button>
         <h1
-          className="font-bold font-sans text-3xl md:text-4xl"
+          className="font-bold font-sans text-3xl md:text-2xl"
           onClick={() => navigate.push("/")}
         >
           {" "}
-          <span className="text-red-400">N</span>ame
+          <span className="text-red-400"></span> [logo]
         </h1>
       </div>
       <div className={`${showMenu} md:flex md:flex-row  flex-col `}>

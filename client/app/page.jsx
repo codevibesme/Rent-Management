@@ -8,7 +8,8 @@ export default function Home() {
       <div className="flex flex-col h-screen bg-slate-200 items-center justify-center px-6">
         <div className="w-fit">
           <h1 className="text-4xl font-bold text-center">
-            Welcome to Company <span className="text-red-400">X</span>YZ
+            Welcome to <span className="text-red-400">ART </span>
+            Management Services
           </h1>
         </div>
         <div className="w-2/3 md:w-1/4 mt-24">

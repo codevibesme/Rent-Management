@@ -73,7 +73,7 @@ const Emails = () => {
             );
           })}
         {mailList && mailList.length === 0 && (
-          <div className="text-gray-500 text-center">No Emails to show</div>
+          <div className="text-gray-500 text-center">Loading Emails...</div>
         )}
         {/* Email modal on View Click Modal Start */}
         <div
