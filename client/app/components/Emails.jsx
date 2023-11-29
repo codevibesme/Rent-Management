@@ -6,26 +6,21 @@ const Emails = () => {
   const [modal, setModal] = useState(false);
   const modalRef = useRef(null);
   const [mailList, setMailList] = useState([]);
-
-  const [email, setEmail] = useState({
-    tenant_id: "103",
-    timestamp: "28/03/2023",
-    subject: "Hello world, Welcome to India, bye bye, see you",
-    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  });
+  const [email, setEmail] = useState({});
 
   // FETCHING EMAILS
   const fetchEmails = async () => {
     try {
       const data = await getAllEmails();
       setMailList(data);
-      console.log("H1");
     } catch (err) {
       console.log(err.message);
     }
   };
   // EMAIL MODAL HANDLER
   useEffect(() => {
+    //CALLING MAIL API
+    fetchEmails();
     function onClickOutside(event) {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setModal(false);
@@ -38,11 +33,8 @@ const Emails = () => {
     };
   }, [modalRef]);
 
-  //CALLING MAIL API
-  fetchEmails();
-
   return (
-    <div className="flex flex-col p-4 z-10">
+    <div className="overflow-y-auto relative flex flex-col min-h-full p-4 z-10">
       <div className="flex w-full border-b border-gray-100 mb-4">
         <div className="text-lg text-gray-700 w-1/4 me-4">ID</div>
         <div className="text-lg text-gray-700 w-1/4 me-4">Date</div>
@@ -87,7 +79,7 @@ const Emails = () => {
         <div
           className={`${
             modal ? "flex" : "hidden"
-          } absolute flex-col p-4 mx-auto left-0 right-0 mx-auto w-2/3 z-40 border border-gray-400 rounded-lg bg-white shadow-md shadow-gray-300`}
+          } absolute h-fit flex-col p-4 mx-auto top-10 bottom-0  left-0 right-0 mx-auto w-2/3 z-40 border border-gray-400 rounded-lg bg-white shadow-md shadow-gray-300`}
           ref={modalRef}
         >
           <div className="relative flex pb-1 flex-wrap -top-8 -right-8">
@@ -105,10 +97,10 @@ const Emails = () => {
             <h1 className="text-2xl">Tenant #{email.tenant_id}</h1>
             <h1 className="text-xl">
               Date -{" "}
-              {/* {new Intl.DateTimeFormat("en-US").format(
-                Date.parse(item.timestamp)
-              )} */}
-              {email.timestamp}
+              {email?.timestamp &&
+                new Intl.DateTimeFormat("en-US").format(
+                  Date.parse(email.timestamp)
+                )}
             </h1>
           </div>
           <div className="flex mb-6 pb-1 border-b border-gray-300 flex-wrap">
