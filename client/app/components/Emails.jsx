@@ -60,7 +60,7 @@ const Emails = () => {
                 <div className="w-1/4">{item.body.slice(0, 30)}...</div>
                 <div className="w-fit p-1">
                   <button
-                    className="bg-red-400 text-white text-lg p-1 rounded-md hover:shadow-red-200 hover:scale-105"
+                    className="bg-black text-white text-white text-lg p-1 rounded-md px-2 py-1"
                     onClick={() => {
                       setModal(true);
                       setEmail(item);
@@ -84,7 +84,7 @@ const Emails = () => {
         >
           <div className="relative flex pb-1 flex-wrap -top-8 -right-8">
             <button
-              className="absolute top-0 right-0 text-xl text-white font-bold bg-red-400 p-1 rounded-lg px-4 hover:scale-105 hover:shadow-red-500"
+              className="absolute top-0 right-0 text-xl text-white font-bold bg-black text-white p-1 rounded-lg px-4"
               onClick={() => {
                 setModal(false);
                 setEmail({});

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 const NavMenu = () => {
   const router = useRouter();
   return (
@@ -17,17 +18,11 @@ const NavMenu = () => {
       >
         Dashboard
       </div>
-      <div
-        className="text-xl cursor-pointer flex items-center me-6 mb-4 md:mb-0"
-        onClick={() => router.push("/pricing")}
-      >
+      <div className="text-xl cursor-pointer flex items-center me-6 mb-4 md:mb-0">
         Pricing
       </div>
-      <div
-        className="text-xl cursor-pointer flex items-center"
-        onClick={() => router.push("/contact")}
-      >
-        Contact
+      <div className="text-xl cursor-pointer flex items-center">
+        <Link href="#contact">Contact</Link>
       </div>
     </div>
   );

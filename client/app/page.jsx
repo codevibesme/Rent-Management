@@ -67,7 +67,7 @@ export default function Home() {
           </div>
         </div>
         {/* THIRD CONTACT BANNER */}
-        <div className="flex flex-col items-center mb-20">
+        <div id="contact" className="flex flex-col items-center mb-20">
           <h1 className="text-4xl md:text-5xl font-bold w-fit">
             Talk to an AMS Agent now
           </h1>

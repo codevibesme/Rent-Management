@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen w-full flex pt-2 px-8 pb-4">
       <div className="hidden md:flex w-fit min-h-fit flex-col border border-gray-400 rounded-md rounded-r-none">
-        <div className="w-full h-fit p-4 bg-slate-200 rounded-md rounded-b-none rounded-r-none mb-6 ">
+        <div className="w-full h-fit p-4 bg-black text-white rounded-md rounded-b-none rounded-r-none mb-6 ">
           <p className="text-xl">Settings</p>
         </div>
         <div className="px-4 flex flex-col w-full">
