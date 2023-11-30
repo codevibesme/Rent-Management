@@ -6,7 +6,7 @@ const Logo = () => {
   return (
     <div className="flex" onClick={() => router.push("/")}>
       <img
-        src="/static/Logo.png"
+        src="/static/images/Logo.png"
         alt="Logo"
         loading="lazy"
         className="w-12 me-2"
