@@ -6,12 +6,14 @@ const Logo = () => {
   return (
     <div className="flex" onClick={() => router.push("/")}>
       <img
-        src="/assets/Logo.png"
+        src="/static/Logo.png"
         alt="Logo"
         loading="lazy"
         className="w-12 me-2"
       />
-      <p className="text-2xl font-sans font-bold flex items-center me-12">AMS</p>
+      <p className="text-2xl font-sans font-bold flex items-center me-12">
+        AMS
+      </p>
     </div>
   );
 };
