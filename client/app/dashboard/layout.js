@@ -1,9 +1,9 @@
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import NewNavbar from "../components/NewNavbar";
 export default function Layout({ children }) {
   return (
     <>
-      <Navbar />
+      <NewNavbar />
       <main>{children}</main>
       <Footer />
     </>
