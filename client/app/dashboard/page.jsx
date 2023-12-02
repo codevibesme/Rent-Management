@@ -10,16 +10,16 @@ const Dashboard = () => {
     setShow(false);
   }, [width]);
   return (
-    <div className="min-h-screen w-full flex pt-2 px-8 pb-4 border-b border-black">
+    <div className="min-h-screen w-full flex pt-4 items-stretch px-8 pb-4 border-b border-black">
       {/* Mobile UI */}
       <div
         className={`md:hidden ${
           !show ? "flex" : "hidden"
-        } flex-col w-full items-center justify-center`}
+        } flex-col w-full h-full px-4 py-6 items-center justify-center items-center`}
       >
         {/* Tab 1 */}
         <div
-          className="flex flex-col px-8 py-5 items-center shadow-lg shadow-gray-400 rounded-lg z-40 mb-6"
+          className="flex flex-col px-4 py-2 items-center shadow-lg shadow-gray-400 rounded-lg z-40 mb-6 justify-stretch"
           onClick={() => {
             setMenu("Reports");
             setShow(true);
@@ -27,17 +27,17 @@ const Dashboard = () => {
         >
           <div className="flex justify-center mb-2">
             <img
-              width="100"
-              height="100"
+              width="75"
+              height="75"
               src="https://img.icons8.com/ios/50/graph-report.png"
               alt="graph-report"
             />
           </div>
-          <h1 className="text-2xl">Reports</h1>
+          <h1 className="text-xl">Reports</h1>
         </div>
         {/* Tab 2 */}
         <div
-          className="flex flex-col px-8 py-5 items-center shadow-lg shadow-gray-400 rounded-lg z-40 mb-6"
+          className="flex flex-col px-4 py-2 items-center shadow-lg shadow-gray-400 rounded-lg z-40 mb-6"
           onClick={() => {
             setMenu("Emails");
             setShow(true);
@@ -45,17 +45,18 @@ const Dashboard = () => {
         >
           <div className="flex justify-center mb-2">
             <img
-              width="100"
-              height="100"
+              width="75"
+              height="75"
               src="https://img.icons8.com/ios/50/new-post--v1.png"
               alt="new-post--v1"
             />
           </div>
-          <h1 className="text-2xl">Emails</h1>
+          <h1 className="text-xl">Emails</h1>
         </div>
+
         {/* Tab 3 */}
         <div
-          className="flex flex-col px-8 py-5 items-center shadow-lg shadow-gray-400 rounded-lg z-40 mb-6"
+          className="flex flex-col px-4 py-2 items-center shadow-lg shadow-gray-400 rounded-lg z-40 mb-6"
           onClick={() => {
             setMenu("Domains");
             setShow(true);
@@ -63,17 +64,17 @@ const Dashboard = () => {
         >
           <div className="flex justify-center mb-2">
             <img
-              width="100"
-              height="100"
+              width="75"
+              height="75"
               src="https://img.icons8.com/ios/50/globe--v1.png"
               alt="globe--v1"
             />
           </div>
-          <h1 className="text-2xl">Domains</h1>
+          <h1 className="text-xl">Domains</h1>
         </div>
         {/* Tab 4 */}
         <div
-          className="flex flex-col px-8 py-5 items-center shadow-lg shadow-gray-400 rounded-lg z-40"
+          className="flex flex-col px-4 py-2 items-center shadow-lg shadow-gray-400 rounded-lg z-40"
           onClick={() => {
             setMenu("Billings");
             setShow(true);
@@ -81,13 +82,13 @@ const Dashboard = () => {
         >
           <div className="flex justify-center mb-2">
             <img
-              width="100"
-              height="100"
+              width="75"
+              height="75"
               src="https://img.icons8.com/ios/50/bill.png"
               alt="bill"
             />
           </div>
-          <h1 className="text-2xl">Billings</h1>
+          <h1 className="text-xl">Billings</h1>
         </div>
       </div>
 

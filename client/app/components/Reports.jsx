@@ -1,12 +1,10 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAllReports } from "../services/api";
-
+import ReportCard from "./ReportCard";
+import { IoArrowBackOutline } from "react-icons/io5";
 const Reports = () => {
-  const [modal, setModal] = useState(false);
-  const modalRef = useRef(null);
   const [reportList, setReportList] = useState([]);
-  const [report, setReport] = useState({});
 
   // FETCHING reportS
   const fetchReports = async () => {
@@ -21,21 +19,33 @@ const Reports = () => {
   useEffect(() => {
     //CALLING MAIL API
     fetchReports();
-    function onClickOutside(event) {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setModal(false);
-        setReport({});
-      }
-    }
-    document.addEventListener("mousedown", onClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", onClickOutside);
-    };
-  }, [modalRef]);
+  }, []);
 
   return (
     <div className="overflow-y-auto relative flex flex-col min-h-full p-4 z-10">
-      <div className="flex w-full border-b border-gray-100 mb-4">
+      {/* MOBILE VIEW */}
+      <div className="md:hidden flex flex-col overflow-y-scroll w-full h-full">
+        <div className="md:hidden flex w-2/3 justify-between mb-6">
+          <button
+            className="bg-black text-white text-xl rounded-full p-2"
+            onClick={() => {
+              if (typeof window !== "undefined") window.location.reload();
+            }}
+          >
+            <IoArrowBackOutline />
+          </button>
+          <h1 className="text-2xl font-bold">Reports</h1>
+        </div>
+        {reportList.length === 0 && (
+          <p className="text-lg text-center text-gray-700">Loading Reports</p>
+        )}
+        {reportList.length !== 0 &&
+          reportList.map((item, key) => {
+            return <ReportCard key={key} report={item} />;
+          })}
+      </div>
+      {/* Desktop VIEW */}
+      <div className="hidden md:flex w-full border-b border-gray-100 mb-4">
         <div className="text-lg text-gray-700 w-[17%] text-center  me-4">
           Tentant ID
         </div>
@@ -86,7 +96,9 @@ const Reports = () => {
             );
           })}
         {reportList && reportList.length === 0 && (
-          <div className="text-gray-500 text-center">Loading Reports...</div>
+          <div className="hidden md:static text-gray-500 text-center">
+            Loading Reports...
+          </div>
         )}
       </div>
     </div>
