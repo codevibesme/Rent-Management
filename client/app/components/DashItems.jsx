@@ -3,8 +3,8 @@ import Emails from "./Emails";
 import Reports from "./Reports";
 const DashItems = ({ menu }) => {
   return (
-    <div className="w-full min-h-fit rounded-md rounded-l-none border border-gray-400 md:border-l-0">
-      <div className="w-full p-4 h-fit bg-black text-white rounded-md rounded-l-none rounded-b-none">
+    <div className="md:block w-full min-h-fit md:rounded-md md:rounded-l-none md:border md:border-gray-400 md:border-l-0">
+      <div className="hidden md:block w-full p-4 h-fit bg-black text-white rounded-md rounded-l-none rounded-b-none">
         <p className="text-xl">{menu}</p>
       </div>
       {menu === "Emails" ? (

@@ -1,13 +1,14 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { getAllEmails } from "../services/api";
+import EmailCard from "./EmailCard";
+import { IoArrowBackOutline } from "react-icons/io5";
 
 const Emails = () => {
   const [modal, setModal] = useState(false);
   const modalRef = useRef(null);
   const [mailList, setMailList] = useState([]);
   const [email, setEmail] = useState({});
-
   // FETCHING EMAILS
   const fetchEmails = async () => {
     try {
@@ -34,14 +35,33 @@ const Emails = () => {
   }, [modalRef]);
 
   return (
-    <div className="overflow-y-auto relative flex flex-col min-h-full p-4 z-10">
-      <div className="flex w-full border-b border-gray-100 mb-4">
+    <div className="overflow-auto relative flex flex-col min-h-full p-4 z-10">
+      {/* MOBILE VIEW */}
+      <div className="md:hidden flex flex-col overflow-y-scroll w-full h-full">
+        <div className="md:hidden flex w-2/3 justify-between mb-6">
+          <button
+            className="bg-black text-white text-xl rounded-full p-2"
+            onClick={() => {
+              if (typeof window !== "undefined") window.location.reload();
+            }}
+          >
+            <IoArrowBackOutline />
+          </button>
+          <h1 className="text-2xl font-bold">Emails</h1>
+        </div>
+        {mailList.length !== 0 &&
+          mailList.map((item, key) => {
+            return <EmailCard key={key} email={item} />;
+          })}
+      </div>
+      {/* DESKTOP VIEW */}
+      <div className="hidden md:flex w-full border-b border-gray-100 mb-4">
         <div className="text-lg text-gray-700 w-1/4 me-4">ID</div>
         <div className="text-lg text-gray-700 w-1/4 me-4">Date</div>
         <div className="text-lg text-gray-700 w-1/4 me-4">Subject</div>
         <div className="text-lg text-gray-700 w-1/4">Body</div>
       </div>
-      <div className="max-w-screen max-h-screen overflow-y-auto">
+      <div className="hidden md:block max-w-screen max-h-screen overflow-y-auto">
         {mailList &&
           mailList.length !== 0 &&
           mailList.map((item, key) => {
