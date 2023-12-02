@@ -49,6 +49,9 @@ const Emails = () => {
           </button>
           <h1 className="text-2xl font-bold">Emails</h1>
         </div>
+        {mailList.length === 0 && (
+          <p className="text-lg text-center text-gray-700">Loading Emails</p>
+        )}
         {mailList.length !== 0 &&
           mailList.map((item, key) => {
             return <EmailCard key={key} email={item} />;
