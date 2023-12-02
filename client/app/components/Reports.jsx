@@ -22,9 +22,9 @@ const Reports = () => {
   }, []);
 
   return (
-    <div className="overflow-y-auto relative flex flex-col min-h-full p-4 z-10">
+    <div className="relative flex flex-col min-h-full p-4 z-10">
       {/* MOBILE VIEW */}
-      <div className="md:hidden flex flex-col overflow-y-scroll w-full h-full">
+      <div className="md:hidden flex flex-col  w-full h-full">
         <div className="md:hidden flex w-2/3 justify-between mb-6">
           <button
             className="bg-black text-white text-xl rounded-full p-2"
@@ -39,10 +39,12 @@ const Reports = () => {
         {reportList.length === 0 && (
           <p className="text-lg text-center text-gray-700">Loading Reports</p>
         )}
-        {reportList.length !== 0 &&
-          reportList.map((item, key) => {
-            return <ReportCard key={key} report={item} />;
-          })}
+        <div className="flex flex-col overflow-y-scroll h-screen">
+          {reportList.length !== 0 &&
+            reportList.map((item, key) => {
+              return <ReportCard key={key} report={item} />;
+            })}
+        </div>
       </div>
       {/* Desktop VIEW */}
       <div className="hidden md:flex w-full border-b border-gray-100 mb-4">
@@ -65,7 +67,7 @@ const Reports = () => {
           Due Date
         </div>
       </div>
-      <div className="max-w-screen max-h-screen overflow-y-auto">
+      <div className="hidden md:flex flex-col max-w-screen max-h-screen overflow-y-auto">
         {reportList &&
           reportList.length !== 0 &&
           reportList.map((item, key) => {

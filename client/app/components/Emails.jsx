@@ -35,9 +35,9 @@ const Emails = () => {
   }, [modalRef]);
 
   return (
-    <div className="overflow-auto relative flex flex-col min-h-full p-4 z-10">
+    <div className="relative flex flex-col min-h-full p-4 z-10">
       {/* MOBILE VIEW */}
-      <div className="md:hidden flex flex-col overflow-y-scroll w-full h-full">
+      <div className="md:hidden flex flex-col w-full h-full">
         <div className="md:hidden flex w-2/3 justify-between mb-6">
           <button
             className="bg-black text-white text-xl rounded-full p-2"
@@ -52,10 +52,12 @@ const Emails = () => {
         {mailList.length === 0 && (
           <p className="text-lg text-center text-gray-700">Loading Emails</p>
         )}
-        {mailList.length !== 0 &&
-          mailList.map((item, key) => {
-            return <EmailCard key={key} email={item} />;
-          })}
+        <div className="overflow-y-scroll flex flex-col h-screen">
+          {mailList.length !== 0 &&
+            mailList.map((item, key) => {
+              return <EmailCard key={key} email={item} />;
+            })}
+        </div>
       </div>
       {/* DESKTOP VIEW */}
       <div className="hidden md:flex w-full border-b border-gray-100 mb-4">
