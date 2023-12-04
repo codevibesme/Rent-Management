@@ -31,7 +31,7 @@ export const getAllReports = async () => {
         transaction_due_date: item.transaction_due_date,
       };
     });
-    console.log(filteredData);
+    // console.log(filteredData);
     return filteredData;
   } catch (err) {
     console.log(err.messge);

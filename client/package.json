@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
+    "antd": "^5.12.1",
     "next": "14.0.3",
     "random-avatar-generator": "^2.0.0",
     "react": "^18",

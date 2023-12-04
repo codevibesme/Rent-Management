@@ -11,13 +11,12 @@ const Dashboard = () => {
   }, [width]);
   return (
     <div className="min-h-screen w-full flex pt-4 items-stretch px-8 pb-4 border-b border-black">
-      {/* Mobile UI */}
-      <div
+      {/* <div
         className={`md:hidden ${
           !show ? "flex" : "hidden"
         } flex-col w-full h-full px-4 py-6 items-center justify-center items-center`}
       >
-        {/* Tab 1 */}
+      
         <div
           className="flex flex-col px-4 py-2 items-center shadow-lg shadow-gray-400 rounded-lg z-40 mb-6 justify-stretch"
           onClick={() => {
@@ -35,7 +34,7 @@ const Dashboard = () => {
           </div>
           <h1 className="text-xl">Reports</h1>
         </div>
-        {/* Tab 2 */}
+        
         <div
           className="flex flex-col px-4 py-2 items-center shadow-lg shadow-gray-400 rounded-lg z-40 mb-6"
           onClick={() => {
@@ -54,7 +53,7 @@ const Dashboard = () => {
           <h1 className="text-xl">Emails</h1>
         </div>
 
-        {/* Tab 3 */}
+       
         <div
           className="flex flex-col px-4 py-2 items-center shadow-lg shadow-gray-400 rounded-lg z-40 mb-6"
           onClick={() => {
@@ -72,7 +71,7 @@ const Dashboard = () => {
           </div>
           <h1 className="text-xl">Domains</h1>
         </div>
-        {/* Tab 4 */}
+       
         <div
           className="flex flex-col px-4 py-2 items-center shadow-lg shadow-gray-400 rounded-lg z-40"
           onClick={() => {
@@ -90,10 +89,10 @@ const Dashboard = () => {
           </div>
           <h1 className="text-xl">Billings</h1>
         </div>
-      </div>
+      </div> */}
 
       {/* DESKTOP UI */}
-      <div className="hidden md:flex w-fit min-h-fit flex-col border border-gray-400 rounded-md rounded-r-none">
+      <div className="flex w-fit min-h-fit flex-col border border-gray-400 rounded-md rounded-r-none">
         <div className="w-full h-fit p-4 bg-black text-white rounded-md rounded-b-none rounded-r-none mb-6 ">
           <p className="text-xl">Settings</p>
         </div>
@@ -110,7 +109,7 @@ const Dashboard = () => {
                 alt="graph-report"
               />
             </p>
-            <h1 className="text-xl">Reports</h1>
+            <h1 className="text-xl">Tenants</h1>
           </div>
 
           <div
@@ -157,8 +156,9 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      {width && width >= 767 && <DashItems menu={menu} />}
-      {width && width < 767 && show && <DashItems menu={menu} />}
+      <DashItems menu={menu} />
+      {/* {width && width >= 767 && <DashItems menu={menu} />}
+      {width && width < 767 && show && <DashItems menu={menu} />} */}
     </div>
   );
 };
