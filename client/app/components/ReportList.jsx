@@ -6,6 +6,7 @@ const ReportList = ({ reportList }) => {
   const [query, setQuery] = useState("");
   const [tenant, setTenant] = useState({});
   const initialTenantDetails = {
+    tenant_ref: "",
     tenant_name: "",
     property_desc: "",
     owner_name: "",
@@ -97,13 +98,24 @@ const ReportList = ({ reportList }) => {
     e.preventDefault();
     // const result = await makeAPICALL sending  tenant
     console.log(tenant);
-    setTenant({});
+    const tempReports = reports.map((item) => {
+      if (item.tenant_ref === tenant.tenant_ref) {
+        console.log({ ...item, tenant });
+        return tenant;
+      }
+      return item;
+    });
+    setReports([...tempReports]);
+    setTenant({ initialTenantDetails });
     setShowEdit(false);
   };
   const handleAddTenant = async (e) => {
     e.preventDefault();
     // const result = await makeAPICALL Seding new tenant
-    console.log(newTenant);
+    // console.log(newTenant);
+    const temp = { ...newTenant, tenant_ref: reports.length + 1 };
+    console.log(temp);
+    setReports([temp, ...reportList]);
     setNewTenant(initialTenantDetails);
     setShowAdd(false);
   };
@@ -262,7 +274,7 @@ const ReportList = ({ reportList }) => {
         ref={editModalRef}
         className={`${
           showEdit ? "block" : "hidden"
-        } absolute h-fit flex-col p-4 mx-auto top-56 bottom-0  left-0 right-0 mx-auto w-2/3 z-40 border border-gray-400 rounded-lg bg-white shadow-md shadow-gray-300`}
+        } absolute h-fit flex-col p-4 mx-auto top-56 bottom-0  left-0 right-0 w-2/3 z-40 border border-gray-400 rounded-lg bg-white shadow-md shadow-gray-300`}
       >
         <div className="flex justify-between mb-4">
           <p className="text-center text-xl font-bold">EDIT DETAILS</p>
@@ -343,7 +355,7 @@ const ReportList = ({ reportList }) => {
         ref={addModalRef}
         className={`${
           showAdd ? "block" : "hidden"
-        } absolute h-fit flex-col p-4 mx-auto top-56 bottom-0  left-0 right-0 mx-auto w-2/3 z-40 border border-gray-400 rounded-lg bg-white shadow-md shadow-gray-300`}
+        } absolute h-fit flex-col p-4 mx-auto top-56 bottom-0  left-0 right-0  w-2/3 z-40 border border-gray-400 rounded-lg bg-white shadow-md shadow-gray-300`}
       >
         <p className="text-center text-xl font-bold mb-4">ADD TENANT</p>
         <form className="flex flex-col">
