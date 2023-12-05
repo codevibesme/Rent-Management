@@ -50,7 +50,7 @@ const EmailList = ({ mailList }) => {
     }
   };
   return (
-    <div className="w-full">
+    <div className="relative w-full h-screen overflow-y-auto">
       <form
         className="w-full flex justify-between mb-6"
         onSubmit={handleSearch}
@@ -74,7 +74,7 @@ const EmailList = ({ mailList }) => {
         </p>
       ) : (
         <table className="w-full border border-black">
-          <thead className="uppercase border border-black over-flow-x-auto">
+          <thead className="sticky top-0 bg-white z-40 uppercase border border-black over-flow-x-auto">
             <tr className="border border-black">
               <th scope="col" className="px-4 py-2 border border-black">
                 <div className="flex justify-between w-full">

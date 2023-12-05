@@ -108,7 +108,7 @@ const ReportList = ({ reportList }) => {
     setShowAdd(false);
   };
   return (
-    <div className="relaitve w-full z-10">
+    <div className="relaitve w-full z-10 h-screen overflow-y-auto">
       <div className="w-full flex justify-between mb-6">
         <form className="w-4/5 flex justify-between" onSubmit={handleSearch}>
           <input
@@ -124,7 +124,7 @@ const ReportList = ({ reportList }) => {
             search
           </button>
         </form>
-        <div className="flex items-start  items-end">
+        <div className="flex">
           <button
             className="rounded-lg bg-black text-white py-2 uppercase px-4"
             onClick={() => setShowAdd(true)}
@@ -140,7 +140,7 @@ const ReportList = ({ reportList }) => {
         </p>
       ) : (
         <table className="w-full border border-black">
-          <thead className="uppercase border border-black overflow-x-auto">
+          <thead className="bg-white z-40 sticky top-0 uppercase border border-black overflow-x-auto">
             <tr className="border border-black">
               <th scope="col" className="px-4 py-2 border border-black">
                 <div className="flex justify-between w-full">

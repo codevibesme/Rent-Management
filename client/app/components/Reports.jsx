@@ -23,7 +23,7 @@ const Reports = () => {
   }, []);
 
   return (
-    <div className="relative flex flex-col min-h-full w-full p-4 z-10">
+    <div className="relative flex flex-col min-h-full w-full p-4 z-10 overflow-x-auto">
       {/* MOBILE VIEW
       <div className="md:hidden flex flex-col  w-full h-full">
         <div className="md:hidden flex w-2/3 justify-between mb-6">
