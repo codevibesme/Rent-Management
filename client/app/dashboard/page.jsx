@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import DashItems from "../components/DashItems";
+import { IoMail } from "react-icons/io5";
+import { RiTeamFill } from "react-icons/ri";
 const Dashboard = () => {
   const [menu, setMenu] = useState("Emails");
   const [show, setShow] = useState(false);
@@ -99,15 +101,10 @@ const Dashboard = () => {
         <div className="px-4 flex flex-col w-full">
           <div
             className="flex w-full mb-4 hover:bg-gray-300 cursor-pointer text-center rounded-md p-2"
-            onClick={() => setMenu("Reports")}
+            onClick={() => setMenu("Tenants")}
           >
-            <p className="me-4">
-              <img
-                width="30"
-                height="30"
-                src="https://img.icons8.com/ios/50/graph-report.png"
-                alt="graph-report"
-              />
+            <p className="me-4 text-3xl">
+              <RiTeamFill />
             </p>
             <h1 className="text-xl">Tenants</h1>
           </div>
@@ -116,17 +113,12 @@ const Dashboard = () => {
             className="flex w-full mb-4 hover:bg-gray-300 cursor-pointer text-center rounded-md p-2"
             onClick={() => setMenu("Emails")}
           >
-            <p className="me-4">
-              <img
-                width="30"
-                height="30"
-                src="https://img.icons8.com/ios/50/new-post--v1.png"
-                alt="new-post--v1"
-              />
+            <p className="me-4 text-3xl">
+              <IoMail />
             </p>
             <h1 className="text-xl">Emails</h1>
           </div>
-          <div
+          {/* <div
             className="flex w-full mb-4 hover:bg-gray-300 cursor-pointer text-center rounded-md p-2"
             onClick={() => setMenu("Domains")}
           >
@@ -153,7 +145,7 @@ const Dashboard = () => {
               />
             </p>
             <h1 className="text-xl">Billing</h1>
-          </div>
+          </div> */}
         </div>
       </div>
       <DashItems menu={menu} />

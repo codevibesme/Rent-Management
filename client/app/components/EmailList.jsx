@@ -31,20 +31,36 @@ const EmailList = ({ mailList }) => {
   // Search fields
   const handleSearch = (e) => {
     e.preventDefault();
+    if (e.target.value === "") {
+      setEmails(mailList);
+      setQuery("");
+      return;
+    }
     if (mailList.length !== 0) {
       const filteredArray = mailList.filter((item) => {
-        return item["tenant_email"].toLowerCase().includes(query.toLowerCase());
+        return (
+          item?.tenant_email &&
+          item["tenant_email"].toLowerCase().includes(query.toLowerCase())
+        );
       });
       setEmails(filteredArray);
+      setQuery("");
     }
   };
   const handleDynamicSearch = (e) => {
     setQuery(e.target.value);
+    if (e.target.value === "") {
+      setEmails(mailList);
+      return;
+    }
     if (mailList.length !== 0) {
       const filteredArray = mailList.filter((item) => {
-        return item["tenant_email"]
-          .toLowerCase()
-          .includes(e.target.value.toLowerCase());
+        return (
+          item?.tenant_email &&
+          item["tenant_email"]
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase())
+        );
       });
       setEmails(filteredArray);
     }
@@ -79,7 +95,7 @@ const EmailList = ({ mailList }) => {
               <th scope="col" className="px-4 py-2 border border-black">
                 <div className="flex justify-between w-full">
                   <p>id</p>
-                  <div className="flex flex-col justify-between">
+                  <div className=" ms-4 flex flex-col justify-between">
                     <button
                       className="text-[0.6rem]"
                       onClick={() => sortFields("tenant_id", "up")}
@@ -130,16 +146,14 @@ const EmailList = ({ mailList }) => {
             {emails.map((item, idx) => {
               return (
                 <tr className="border border-black" key={idx}>
-                  <td className="px-4 py-2 border border-black">
-                    {item.tenant_id}
-                  </td>
+                  <td className="px-4 py-2 border border-black">{item.id}</td>
                   <td className="px-4 py-2 border border-black">
                     {new Intl.DateTimeFormat("en-US").format(
                       Date.parse(item.timestamp)
                     )}
                   </td>
                   <td className="px-4 py-2 border border-black">
-                    {item.tenant_email}
+                    {item?.tenant_email ? item.tenant_email : "NA"}
                   </td>
                   <td className="px-4 py-2 border border-black">
                     {item.subject}

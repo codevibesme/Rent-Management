@@ -22,7 +22,7 @@ const NavMenu = () => {
         Pricing
       </div>
       <div className="text-xl cursor-pointer flex items-center">
-        <Link href="#contact">Contact</Link>
+        <Link href="/#contact">Contact</Link>
       </div>
     </div>
   );

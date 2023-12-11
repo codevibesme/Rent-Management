@@ -5,6 +5,7 @@ const ReportList = ({ reportList }) => {
   const [reports, setReports] = useState([]);
   const [query, setQuery] = useState("");
   const [tenant, setTenant] = useState({});
+  const [resultsFound, setResultsFound] = useState(true);
   const initialTenantDetails = {
     tenant_ref: "",
     tenant_name: "",
@@ -67,16 +68,20 @@ const ReportList = ({ reportList }) => {
         return (
           item["tenant_name"].toLowerCase().includes(query.toLowerCase()) ||
           item["property_desc"].toLowerCase().includes(query.toLowerCase()) ||
-          item["owner_name"]
-            .toLowerCase()
-            .includes(e.target.value.toLowerCase())
+          item["owner_name"].toLowerCase().includes(query.toLowerCase())
         );
       });
       setReports(filteredArray);
+      setQuery("");
     }
   };
   const handleDynamicSearch = (e) => {
     setQuery(e.target.value);
+    if (e.target.value === "") {
+      setReports(reportList);
+      setQuery("");
+      return;
+    }
     if (reportList.length !== 0) {
       const filteredArray = reportList.filter((item) => {
         return (
@@ -91,6 +96,8 @@ const ReportList = ({ reportList }) => {
             .includes(e.target.value.toLowerCase())
         );
       });
+      if (filteredArray.length === 0) setResultsFound(false);
+      else setResultsFound(true);
       setReports(filteredArray);
     }
   };
@@ -145,12 +152,16 @@ const ReportList = ({ reportList }) => {
           </button>
         </div>
       </div>
-
-      {reports.length === 0 ? (
+      {reportList.length === 0 && (
+        <div className="text-gray-700 text-2xl text-center">
+          There are no Tenants. Add Now.
+        </div>
+      )}
+      {reports.length === 0 && !resultsFound ? (
         <p className="text-xl text-gray-700 text-center mt-10">
           No results found...
         </p>
-      ) : (
+      ) : reports.length !== 0 ? (
         <table className="w-full border border-black">
           <thead className="bg-white z-40 sticky top-0 uppercase border border-black overflow-x-auto">
             <tr className="border border-black">
@@ -268,6 +279,10 @@ const ReportList = ({ reportList }) => {
             })}
           </tbody>
         </table>
+      ) : (
+        <div className="text-gray-700 text-xl text-center">
+          Loading Tenants....
+        </div>
       )}
       {/* EDIT CELL MODAL */}
       <div

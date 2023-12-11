@@ -9,7 +9,7 @@ const DashItems = ({ menu }) => {
       </div>
       {menu === "Emails" ? (
         <Emails />
-      ) : menu === "Reports" ? (
+      ) : menu === "Tenants" ? (
         <Reports />
       ) : (
         <h1 className="text-2xl text-center text-gray-700 mt-24">

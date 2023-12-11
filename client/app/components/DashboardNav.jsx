@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-
+import { IoMailOpen } from "react-icons/io5";
 const DashboardNav = () => {
   return (
     <div className="hidden md:flex w-fit min-h-fit flex-col border border-gray-400 rounded-md rounded-r-none">
@@ -21,13 +21,8 @@ const DashboardNav = () => {
         </div>
 
         <div className="flex w-full mb-4 hover:bg-gray-300 cursor-pointer text-center rounded-md p-2">
-          <p className="me-4">
-            <img
-              width="30"
-              height="30"
-              src="https://img.icons8.com/ios/50/new-post--v1.png"
-              alt="new-post--v1"
-            />
+          <p className="me-4 text-2xl">
+            <IoMailOpen />
           </p>
           <h1 className="text-xl">Emails</h1>
         </div>
